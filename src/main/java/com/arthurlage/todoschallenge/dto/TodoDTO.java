@@ -2,7 +2,7 @@ package com.arthurlage.todoschallenge.dto;
 
 import com.arthurlage.todoschallenge.enumerator.Priority;
 
-import java.sql.Timestamp;
+import java.util.Date;
 import java.util.UUID;
 
 public record TodoDTO(
@@ -11,6 +11,6 @@ public record TodoDTO(
         String description,
         boolean isDone,
         Priority priority,
-        Timestamp createdAt
+        Date createdAt
 ) {
 }

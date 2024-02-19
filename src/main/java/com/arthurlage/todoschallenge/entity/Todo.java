@@ -10,6 +10,7 @@ import lombok.NoArgsConstructor;
 import org.springframework.data.annotation.CreatedDate;
 
 import java.sql.Timestamp;
+import java.util.Date;
 import java.util.UUID;
 
 @Entity
@@ -23,16 +24,17 @@ public class Todo {
     @NotBlank
     private String name;
     private String description;
-    private boolean isDone = false;
+    private boolean isDone;
     private Priority priority = Priority.MEDIA;
     @CreatedDate
-    private Timestamp createdAt;
+    private Date createdAt;
 
     public Todo(String name, String description, boolean isDone, Priority priority) {
         this.name = name;
         this.description = description;
         this.isDone = isDone;
         this.priority = priority;
+        this.createdAt = new Date();
     }
 
     public Todo(CreateTodoRequestDTO createTodoRequestDTO) {
@@ -40,5 +42,6 @@ public class Todo {
         this.description = createTodoRequestDTO.description();
         this.isDone = createTodoRequestDTO.isDone();
         this.priority = createTodoRequestDTO.priority();
+        this.createdAt = new Date();
     }
 }
