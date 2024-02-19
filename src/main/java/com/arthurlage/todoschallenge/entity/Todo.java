@@ -1,5 +1,6 @@
 package com.arthurlage.todoschallenge.entity;
 
+import com.arthurlage.todoschallenge.dto.CreateTodoRequestDTO;
 import com.arthurlage.todoschallenge.enumerator.Priority;
 import jakarta.persistence.*;
 import jakarta.validation.constraints.NotBlank;
@@ -32,5 +33,12 @@ public class Todo {
         this.description = description;
         this.isDone = isDone;
         this.priority = priority;
+    }
+
+    public Todo(CreateTodoRequestDTO createTodoRequestDTO) {
+        this.name = createTodoRequestDTO.name();
+        this.description = createTodoRequestDTO.description();
+        this.isDone = createTodoRequestDTO.isDone();
+        this.priority = createTodoRequestDTO.priority();
     }
 }
